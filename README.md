@@ -21,4 +21,4 @@ Also created a preliminary version of my portfolio. I wanted to explore further 
 
 URL: https://github.com/shaunwang1350/portfolio
 
-![image info](./images/port_ss.png)
+![image info](./images/portfolio_ss.png)

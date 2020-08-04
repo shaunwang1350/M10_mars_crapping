@@ -1,21 +1,49 @@
 # Import Splinter, BeautifulSoup, and Pandas
 from splinter import Browser
-from bs4 import BeautifulSoup as soup
+from bs4 import BeautifulSoup
 import pandas as pd
 import datetime as dt
-
 
 def scrape_all():
     # Initiate headless driver for deployment
     browser = Browser("chrome", executable_path="chromedriver", headless=True)
 
     news_title, news_paragraph = mars_news(browser)
+    title, img_url, thumbnail_src = challenge_image(browser)
+    
+    cImage1 = img_url[0]
+    cTitle1 = title[0]
+    thumbnail_1 = thumbnail_src[0]
+
+    cImage2 = img_url[1]
+    cTitle2 = title[1]
+    thumbnail_2 = thumbnail_src[1]
+
+    cImage3 = img_url[2]
+    cTitle3 = title[2]
+    thumbnail_3 = thumbnail_src[2]
+
+    cImage4 = img_url[3]
+    cTitle4 = title[3]
+    thumbnail_4 = thumbnail_src[3]
 
     # Run all scraping functions and store results in a dictionary
     data = {
         "news_title": news_title,
         "news_paragraph": news_paragraph,
         "featured_image": featured_image(browser),
+        "challenge_image_1": cImage1,
+        "challenge_title_1": cTitle1,
+        "thumbnail_1": thumbnail_1,
+        "challenge_image_2": cImage2,
+        "challenge_title_2": cTitle2,
+        "thumbnail_2": thumbnail_2,
+        "challenge_image_3": cImage3,
+        "challenge_title_3": cTitle3,
+        "thumbnail_3": thumbnail_3,
+        "challenge_image_4": cImage4,
+        "challenge_title_4": cTitle4,
+        "thumbnail_4": thumbnail_4,
         "facts": mars_facts(),
         "last_modified": dt.datetime.now()
     }
@@ -37,7 +65,7 @@ def mars_news(browser):
 
     # Convert the browser html to a soup object and then quit the browser
     html = browser.html
-    news_soup = soup(html, 'html.parser')
+    news_soup = BeautifulSoup(html, 'html.parser')
 
     # Add try/except for error handling
     try:
@@ -69,7 +97,7 @@ def featured_image(browser):
 
     # Parse the resulting html with soup
     html = browser.html
-    img_soup = soup(html, 'html.parser')
+    img_soup = BeautifulSoup(html, 'html.parser')
 
     # Add try/except for error handling
     try:
@@ -99,6 +127,39 @@ def mars_facts():
 
     # Convert dataframe into HTML format, add bootstrap
     return df.to_html(classes="table table-striped")
+
+def challenge_image(browser):
+    url = 'https://astrogeology.usgs.gov/search/results?q=hemisphere+enhanced&k1=target&v1=Mars'
+    browser.visit(url)
+
+    img_url = []
+    title = []
+    thumbnail_src = []
+
+    html = browser.html
+    img_soup = BeautifulSoup(html, 'html.parser')
+
+    items = img_soup.find_all('div', class_='item')
+    for item in items: 
+        
+        item_url_href = item.find('a', class_="itemLink product-item")['href']
+        thumbnail_src.append(item.find('img', class_="thumb")['src'])
+        item_url = f'https://astrogeology.usgs.gov{item_url_href}'
+        browser.visit(item_url)
+
+        html = browser.html
+        img_soup_2 = BeautifulSoup(html, 'html.parser')
+
+        try:
+            title.append(img_soup_2.find('h2', class_='title').get_text())
+            download_ele = img_soup_2.find('div', class_='downloads')
+            img_url.append(download_ele.find('a')['href'])
+        
+        except AttributeError:
+            return None, None, None
+        
+        
+    return title, img_url, thumbnail_src
 
 if __name__ == "__main__":
 

@@ -1,4 +1,4 @@
-# M10_mars_crapping
+# mars_crapping
 
 ### Background
 Robin’s web app is looking good and functioning well, but she wanted to add more polish to it. She had been admiring images of Mars’ hemispheres and realized that the site is scraping-friendly. She would like to adjust the current web app to include all four of the hemispheres images. This requires additional scraping code to pull the high-resolution images, updating Mongo to include the new data, and altering the design of her web app to accommodate these images.
@@ -15,10 +15,3 @@ Robin’s web app is looking good and functioning well, but she wanted to add mo
 * Saved both the image URL string (for the full-resolution image) and the hemisphere title (with the name).
 * Used a Python dictionary to store the data using the keys 'img_url' and 'title'.
 * Appended the dictionary with the image URL string and the hemisphere title to a list. This list will contain one dictionary for each hemisphere.
-
-### NOTE: Portfolio
-Also created a preliminary version of my portfolio. I wanted to explore further on HTML/CSS, especially practing the box-model. So, I didn't use bootstrap to create any of the elements, but instead started from scratch:
-
-URL: https://github.com/shaunwang1350/portfolio
-
-![image info](./images/portfolio_ss.png)

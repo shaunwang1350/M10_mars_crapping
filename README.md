@@ -15,3 +15,14 @@ Robin’s web app is looking good and functioning well, but she wanted to add mo
 * Saved both the image URL string (for the full-resolution image) and the hemisphere title (with the name).
 * Used a Python dictionary to store the data using the keys 'img_url' and 'title'.
 * Appended the dictionary with the image URL string and the hemisphere title to a list. This list will contain one dictionary for each hemisphere.
+
+### Tech Used:
+* Python
+* Jupyter Notebook
+* HTML
+* CSS
+* Bootstrap
+* BeautifulSoup
+* Splinter
+* Flask
+* MongoDB

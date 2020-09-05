@@ -1,7 +1,7 @@
 # NASA Mars Webscraping
 
 ### Background
-Robin’s web app is looking good and functioning well, but she wanted to add more polish to it. She had been admiring images of Mars’ hemispheres and realized that the site is scraping-friendly. She would like to adjust the current web app to include all four of the hemispheres images. This requires additional scraping code to pull the high-resolution images, updating Mongo to include the new data, and altering the design of her web app to accommodate these images.
+Created a app.py web scrapper (needs to run app.py to load flask and scrapper). The index.html includes a dashboard on Mar's basic metrics/facts, the latest news on mars, high-res images of mars, and the lastest and most featured image of mars. All of this is scrapped from Mar's website. This process uses BeautifulSoup, Splinter to scrape NASA's website, stores the information in MongoDB, and then uses Flask, javascript, Bootstrap to display the data. 
 
 ### Objectives
 * Use BeautifulSoup and Splinter to automate a web browser and scrape high-resolution images.

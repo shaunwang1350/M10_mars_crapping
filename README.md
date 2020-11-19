@@ -5,6 +5,7 @@
 ![githubfollows](https://img.shields.io/github/followers/shaunwang1350?style=social)
 <br >
 
+![img](images/project5_2.png)
 
 ### Background
 Created a app.py web scrapper (needs to run app.py to load flask and scrapper). The index.html includes a dashboard on Mar's basic metrics/facts, the latest news on mars, high-res images of mars, and the lastest and most featured image of mars. All of this is scrapped from Mar's website. This process uses BeautifulSoup, Splinter to scrape NASA's website, stores the information in MongoDB, and then uses Flask, javascript, Bootstrap to display the data. 
@@ -33,4 +34,4 @@ Created a app.py web scrapper (needs to run app.py to load flask and scrapper). 
 * Flask
 * MongoDB
 
-![img](images/project5_1.png)
+
